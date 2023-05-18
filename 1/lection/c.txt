@@ -1,0 +1,115 @@
+vi example1.c
+
+#define _GNU_SOURCE
+#include <sched.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+static char child_stack[1048576];
+
+static int child_fn() {
+  printf("PID: %ld\n", (long)getpid());
+  return 0;
+}
+
+int main() {
+  pid_t child_pid = clone(child_fn, child_stack+1048576, CLONE_NEWPID | SIGCHLD, NULL);
+  printf("clone() = %ld\n", (long)child_pid);
+
+  waitpid(child_pid, NULL, 0);
+  return 0;
+}
+
+gcc example1.c -o example1.sh
+./example1.sh
+ps -aux
+vi example1.c
+
+#define _GNU_SOURCE
+#include <sched.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+static char child_stack[1048576];
+
+static int child_fn() {
+  printf("Parent PID: %ld\n", (long)getpid());
+  return 0;
+}
+
+int main() {
+  pid_t child_pid = clone(child_fn, child_stack+1048576, CLONE_NEWPID | SIGCHLD, NULL);
+  printf("clone() = %ld\n", (long)child_pid);
+
+  waitpid(child_pid, NULL, 0);
+  return 0;
+}
+
+gcc example1.c -o example1.sh
+./example1.sh
+
+vi example1.c
+
+#define _GNU_SOURCE
+#include <sched.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+static char child_stack[1048576];
+
+static int child_fn() {
+  printf("Parent PID: %ld\n", (long)getpid());
+  return 0;
+}
+
+int main() {
+  pid_t child_pid = clone(child_fn, child_stack+1048576, SIGCHLD, NULL);
+  printf("clone() = %ld\n", (long)child_pid);
+
+  waitpid(child_pid, NULL, 0);
+  return 0;
+}
+
+gcc example1.c -o example1.sh
+./example1.sh
+
+vi example2.c
+
+#define _GNU_SOURCE
+#include <sched.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+static char child_stack[1048576];
+
+static int child_fn() {
+  printf("New `net` Namespace:\n");
+  system("ip link");
+  printf("\n\n");
+  return 0;
+}
+
+int main() {
+  printf("Original `net` Namespace:\n");
+  system("ip link");
+  printf("\n\n");
+
+  pid_t child_pid = clone(child_fn, child_stack+1048576, CLONE_NEWPID | CLONE_NEWNET | SIGCHLD, NULL);
+
+  waitpid(child_pid, NULL, 0);
+  return 0;
+}
+
+gcc example2.c -o example2.sh
+./example2.sh
+
+strace example2.sh
+

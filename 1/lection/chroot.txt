@@ -1,0 +1,14 @@
+mkdir GB
+chroot GB /bin/bash
+ls GB
+mkdir GB/bin
+cp /bin/bash GB/bin/
+chroot GB /bin/bash
+ldd /bin/bash
+mkdir GB/lib
+mkdir GB/lib64
+cp /lib/x86_64-linux-gnu/libtinfo.so.6 GB/lib
+cp /lib/x86_64-linux-gnu/libc.so GB/lib
+cp /lib/x86_64-linux-gnu/libc.so.6 GB/lib
+cp /lib64/ld-linux-x86-64.so.2 GB/lib64/
+chroot GB
