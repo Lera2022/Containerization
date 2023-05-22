@@ -1,0 +1,64 @@
+free -m
+ls
+ls -a
+mkdir testfolder
+ls
+mkdir testfolder/bin
+cp /bin/bash testfolder/bin
+ldd /bin/bash
+mkdir testfolder/lib
+mkdir testfolder/lib64
+cd testfolder/
+ls
+cd ..
+cp /lib/x86_64-linux-gnu/libtinfo.so.6 testfolder/lib
+cp /lib64/ld-linux-x86-64.so.2 testfolder/lib64
+cp /lib/x86_64-linux-gnu/libdl.so.2 testfolder/lib
+cp /lib/x86_64-linux-gnu/libc.so.6 testfolder/lib
+chroot testfolder
+sudo chroot testfolder
+exit
+ldd /bin/ls
+cp /lib/x86_64-linux-gnu/libselinux.so.1 testfolder/lib
+cp /lib/x86_64-linux-gnu/libpcre2-8.so.0 testfolder/lib
+cp /lib/x86_64-linux-gnu/libpthread.so.0 testfolder/lib
+cp /bin/ls testfolder/bin
+sudo chroot testfolder/
+ls
+exit
+
+ldd /bin/mkdir
+
+ldd /bin/ip
+cp /lib/x86_64-linux-gnu/libselinux.so.1 testfolder/lib
+cp /lib/x86_64-linux-gnu/libc.so.6 testfolder/lib
+cp /lib/x86_64-linux-gnu/libpcre2-8.so.0 testfolder/lib
+cp /lib64/ld-linux-x86-64.so.2 testfolder/lib64
+cp /bin/ip testfolder/bin
+sudo chroot testfolder
+exit
+
+sudo apt install docker
+
+ip netns list
+ip netns del
+sudo ip netns add tests
+sudo ip netns exec tests bash
+exit
+
+ip a
+sudo ip netns exec tests bash
+ip a
+exit
+
+ping localhost
+^c
+
+sudo ip netns exec tests bash
+ping localhost
+ip link set dev lo up
+ip a
+ping localhost
+exit
+ip a
+1:35
