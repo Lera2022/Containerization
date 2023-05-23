@@ -61,4 +61,17 @@ ip a
 ping localhost
 exit
 ip a
-1:35
+
+ip link add enp0s4 type veth
+ip a
+exit
+ip a
+
+sudo ip netns exec tests bash
+ip addr 10.0.0.1/24 dev enp0s4
+
+sudo unshare --net bash
+exit
+sudo unshare --pid bash
+exit
+sudo unshare --pid --net --mount-proc bash
