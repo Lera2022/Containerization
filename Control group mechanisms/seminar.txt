@@ -1,0 +1,68 @@
+top
+htop
+
+ls
+cd les2
+ls
+cat cpu.py
+python3 cpu.py &
+python3 cpu.py &
+python3 cpu.py &
+htop
+cd /sys/
+ls
+cd fs
+ls
+cd cgroup/
+ls
+sudo systemctl status
+mkdir test
+sudo su
+mkdir test
+cd test
+ls
+cat cgroup.controllers
+mkdir g1
+cd g1
+ls
+cat cgroup.controllers
+rmdir g1
+ls
+cat cgroup.subtree_control
+echo +cpu > cgroup.subtree_control
+echo +memory > cgroup.subtree_control
+echo +pids > cgroup.subtree_control
+mkdir g1
+cd g1
+ls
+cat cgroup.controllers
+cd ..
+mkdir g2
+mkdir g3
+cd g1
+cat cpu.max
+echo 10000 > cpu.max
+
+killall python3
+jobs
+htop
+python3 cpu.py &
+htop
+echo 6724 > cgroup.procs
+htop
+cd ..
+
+cd g2
+echo 30000 > cpu.max
+python3 cpu.py &
+htop
+echo 6727 > cgroup.procs
+cd ..
+
+python3 cpu.py &
+cd g3
+echo 50000 > cpu.max
+echo 6731 > cgroup.procs
+htop
+
+1:00

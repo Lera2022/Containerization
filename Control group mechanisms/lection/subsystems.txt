@@ -1,0 +1,25 @@
+blkio
+
+blkio.weight
+
+$ echo 200 > blkio.weight
+$ cat blkio.weight
+200
+
+blkio.weight_device
+
+$ echo 8: 0 200 > blkio.weight_device
+$ cat blkio.weight_device
+8:0 200
+
+cpu
+
+cpu.rt_runtime_us4000000
+cpu.rt_period_us10000000
+
+mkdir /sys/fs/cgroup/testgroup1
+ls /sys/fs/cgroup/testgroup1/
+cat /sys/fs/cgroup/testgroup1/cpu.stat
+cat /proc/$$/status | grep 'allowed'
+vi /sys/fs/cgroup/testgroup1/memory.max     // 200M
+cat /sys/fs/cgroup/testgroup1/memory.max 
