@@ -25,7 +25,7 @@ lxc-attach -n test123
 free -m
 
 lxc-ls -f
-vi /var/lib/lxc/test123/config      // lxc-start.auto = 1
+vi /var/lib/lxc/test123/config      // lxc.start.auto = 1
 lxc-stop -n test123
 lxc-ls -f
 reboot

@@ -1,0 +1,66 @@
+docker --version
+sudo docker run -it ubuntu
+ls -a
+ifconfig
+exit
+sudo docker container ls
+sudo docker container ls -a
+sudo docker run -h cont123 -it ubuntu
+hostname
+exit
+sudo docker run -h cont123 --name c123 -it ubuntu
+exit
+sudo docker container ls -a
+sudo docker run --name name1 -d centos
+sudo docker images
+sudo docker container ls -a
+sudo docker run -dit centos
+sudo docker container ls -a
+sudo docker container ls
+sudo docker stop  407
+sudo docker container ls
+sudo docker rm $(sudo docker ps -a -q)
+sudo docker container ls -a
+
+sudo docker run -it ubuntu
+cd test
+cd test
+touch new_file.txt
+ls -a
+exit
+sudo docker rm $(docker ps -a -q)
+sudo docker container ls -a
+sudo docker container rm 3963
+sudo docker run -it ubuntu
+ls -a
+exit
+sudo docker container ls -a
+sudo docker container rm $ 4ba5
+sudo docker container ls -a
+cd /
+sudo mkdir share
+sudo docker run -it -v /share:/container_share ubuntu
+ls -a
+cd container_share
+ls
+touch test.txt
+ls -a
+exit
+sudo docker container ls -a
+sudo docker container rm 023b
+sudo docker run -it -v /share:/container_share ubuntu
+cd container_share
+ls -a
+exit
+cd share
+ls -a
+
+
+sudo docker run -it --name doc -h doc1 -e MARIADB_ROOT_PASSWORD=12345 mariadb
+sudo docker run -d -dit --name doc1 -h doc1 -e MARIADB_ROOT_PASSWORD=12345 mariadb
+sudo docker container ls -a
+sudo docker exec -it 3e19 bash
+ls -a
+mariadb -u root -p
+12345
+show databases

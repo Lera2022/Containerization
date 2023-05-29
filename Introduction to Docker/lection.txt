@@ -1,0 +1,70 @@
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; 
+do sudo apt-get remove $pkg; 
+done
+
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+  sudo apt-get update
+
+  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+  sudo docker run hello-world
+
+
+  docker --help
+  docker run --help
+  docker --version
+  docker --info
+  docker pull ubuntu
+  docker pull ubuntu:18.04
+  docker images
+  docker rmi ubuntu:18.04
+  docker images
+  docker rmi $(docker images -aq)^c
+  docker images -aq
+  docker rmi $(docker images -aq) --force
+  docker images
+  docker ps -a
+
+docker run -it ubuntu bash
+exit
+docker run -it ubuntu date
+docker run --publish 8080:80 nginx
+docker run -d --publish 8080:80 nginx
+curl 127.0.0.1:8080
+docker ps -a
+docker start GeekBrains
+docker rm GeekBrains
+docker rm $(docker ps -a -q)^c
+docker ps -a
+docker ps -q
+docker ps -a -q
+docker stop <container ID>
+docker rm $(docker ps -a -q)
+docker ps -a
+docker run -d ubuntu
+docker ps -a
+docker system df
+docker system prune -af
+docker ps -a
+docker images
+
+docker run ubuntu
+docker ps -a
+docker run ubuntu sleep 1200
+docker ps -a
+docker run -d ubuntu sleep 15
+docker ps -a
+docker rmi $(docker images -a -q) --force
+docker stop <container ID>

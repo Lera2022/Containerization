@@ -65,4 +65,65 @@ echo 50000 > cpu.max
 echo 6731 > cgroup.procs
 htop
 
-1:00
+ps -afx
+sd ..
+ls
+cat cpuset.cpus
+echo 0 > cpuset.cpus
+echo 1 > cpuset.cpus
+cat cpuset.cpus
+
+cd g1/
+echo max > cpu.max
+cd ..
+echo max > g2/cpu.max
+echo max > g3/cpu.max
+ls
+echo 5 > g1/cpu.weight
+echo 2 > g2/cpu.weight
+echo 3 > g3/cpu.weight
+
+killall python3
+jobs
+python3 cpu.py &
+python3 cpu.py &
+python3 cpu.py &
+echo 6750 > g1/cgroup.procs
+echo 6751 > g2/cgroup.procs
+echo 6752 > g3/cgroup.procs
+cd cat cpu.stat
+
+nano mem.py
+i = "!"
+while True:
+        i *= 2
+python3 mem.py
+
+nano mem.py
+import os
+print(os.getpid())
+input()
+i = "!"
+while True:
+        i *= 2
+python3 mem.py
+
+ls
+echo 300m > memory.max
+echo 6775 > cgroup.procs
+htop
+la
+echo 0 > memory.swap.max
+echo 6779 > cgroup.procs
+htop
+echo 1g > memory.max
+echo 6781 > cgroup.procs
+echo 10000 > cpu.max
+htop
+echo 5 > pids.max
+
+sudo apt install lxc
+sudo apt install lxc-templates
+lxc
+sudo lxc-create -n test123 -t ubuntu
+lxc list
