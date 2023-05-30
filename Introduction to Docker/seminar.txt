@@ -63,4 +63,61 @@ sudo docker exec -it 3e19 bash
 ls -a
 mariadb -u root -p
 12345
-show databases
+show databases;
+exit
+sudo docker container stop doc
+
+
+sudo docker run -d --name php1 --link doc1:db -p 8081:80 phpmyadmin/phpmyadmin
+sudo docker container ls
+sudo docker stop $(sudo docker container ls -a -q)
+sudo docker container ls -a
+sudo docker container rm $(sudo docker container ps -a -q)
+sudo ls
+mkdir mariadatabase
+ls
+sudo docker run -d -dit -v /mariadatabase:/var/lib/mysql -e MARIADB_ROOT_PASSWORD=12345 mariadb
+sudo docker exec -it 7144 bash
+mariadb -u root -p
+12345
+show databases;
+CREATE DATABASE basa;
+show databases;
+exit
+sudo docker container stop 7144
+sudo docker container ls -a
+sudo docker container rm 7144
+sudo docker container ls  -a
+ls
+cd mariadatabase
+ls
+ls -a
+cd  ..
+sudo docker run -d -dit -v mariadatabase:var/lib/mysql -e MARIADB_ROOT_PASSWORD=12345 mariadb
+ls
+sudo docker exec -it 2579 bash
+ls
+cd /var/lib
+ls
+mariadb -u root -p
+CREATE DATABASE vvv;
+exit
+exit
+cd cd mariadatabase
+ls -a
+sudo docker run -it -v /mariadatabase:/test ubuntu
+ls
+cd test
+touch test.txt
+exit
+ls
+ls -a
+sudo docker run -t -v /mariadatabase:/test ubuntu
+ls test
+exit
+ls /mariadatabase
+cd /
+ls
+cd mariadatabase
+ls
+
