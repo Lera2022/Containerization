@@ -1,0 +1,174 @@
+FROM alpine
+FROM ubuntu:22.10
+FROM scratch
+
+LABEL maintainer="Vladlen Melnik"
+LABEL mt_telegram="@mazzahaker"
+LABEL mt_email="hack-me@list.ru"
+
+ENV ADMIN="mazzahaker"
+ENV DB_name="GBcontainers"
+ENV ROOT_PW="testpass123"
+
+RUN apt update
+RUN apt upgrade
+RUN apt install openssh
+
+COPY ./test.sh
+COPY /example/site/test
+copy ./example_local_dir/
+
+ADD https://github.com/mazzahaker/test-lesson-jenkins/blob/main/pipeline/testdir123
+ADD ftp://testsrv/testfile/testdir123/testfile
+
+WORKDIR /usr/src/test_directory
+WORKDIR /test123
+WORKDIR ../dir/lesson
+
+ARG test_var=script.py
+ARG DB_name="example_db"
+ARG DB_pass="pass123"
+
+CMD ["python", "./testscript.py"]
+CMD ["cowsay", "Hello from Docker!"]
+CMD ["bash", "uname -a"]
+
+ENTRYPOINT ["python", "test_var"]
+ENTRYPOINT ["bash", "sleep 600"]
+ENTRYPOINT ["bash", "uname -a"]
+
+CMD ["python", "test_var"]
+
+EXPOSE 8080
+EXPOSE 2319
+
+VOLUME /my_volume
+VOLUME /test/volume123
+
+apt install cowsay
+/usr/games/cowsay "GeekBrains"
+/usr/games/cowsay "Hi"
+/usr/games/cowthink "Hi"
+
+vi Dockerfile
+
+FROM ubuntu:22.10
+RUN upt-get update
+RUN apt-get install -y cowsay
+RUN ln -s /usr/games/cowsay /usr/bin/cowsay
+CMD ["cowsay"]
+
+cat Dockerfile
+
+docker build -t cowsaytest
+docker run -it cowsaytest bash
+hostname
+cowsay "Hi"
+exit
+
+docker run cowsaytest cowsay "GeekBrains"
+docker images
+vi Dockerfile
+
+FROM ubuntu:22.10
+RUN upt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay
+RUN rm -rf /var/lib/apt/lists/*
+CMD ["cowsay"]
+
+docker build -t cowsaytest
+docker images
+vi Dockerfile
+
+FROM ubuntu:22.10
+RUN upt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay && \
+    rm -rf /var/lib/apt/lists/*
+CMD ["cowsay"]
+
+docker build -t cowsaytest
+docker images
+docker run cowsaytest cowsay "GeekBrains"
+vi Dockerfile
+
+FROM alpine
+RUN upt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay && \
+    rm -rf /var/lib/apt/lists/*
+CMD ["cowsay"]
+
+docker build -t cowsaytest
+vi Dockerfile
+
+FROM alpine
+RUN apk update && \
+    apk add cowsay && \
+    --update-cache \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/community \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+    --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    rm -rf /var/cache/apk/*
+CMD [“cowsay”]
+
+docker build -t cowsaytest
+docker images
+vi Dockerfile
+
+FROM alpine
+RUN echo "123" > /test
+RUN apk update && \
+    apk add cowsay && \
+    --update-cache \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/community \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+    --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    rm -rf /var/cache/apk/*
+CMD [“cowsay”]
+
+docker build -t cowsaytest
+docker images
+docker build -t cowsaytest
+vi Dockerfile
+
+FROM alpine
+RUN echo "1234" > /test
+RUN apk update && \
+    apk add cowsay && \
+    --update-cache \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/community \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+    --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    rm -rf /var/cache/apk/*
+CMD [“cowsay”]
+
+docker build -t cowsaytest
+vi Dockerfile
+
+FROM alpine
+RUN apk update && apk add cowsay \
+    --update-cache \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/community \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+    --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    rm -rf /var/cache/apk/*
+RUN echo "123" > /test
+CMD [“cowsay”]
+
+docker build -t cowsaytest
+docker build -t cowsaytest
+vi Dockerfile
+
+FROM alpine
+RUN apk update && apk add cowsay \
+    --update-cache \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/community \
+    --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+    --repository https://dl-3.alpinelinux.org/alpine/edge/testing && \
+    rm -rf /var/cache/apk/*
+RUN echo "1234" > /test
+CMD [“cowsay”]
+
+docker build -t cowsaytest

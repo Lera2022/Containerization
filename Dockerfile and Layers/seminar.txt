@@ -1,0 +1,12 @@
+docker --version
+mkdir seminar4
+cd seminar4
+vim Dockerfile
+nano Dockerfile
+
+FROM ubuntu:latest
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/game/cowsay
+
+    21:13
