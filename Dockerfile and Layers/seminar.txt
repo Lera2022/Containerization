@@ -7,6 +7,22 @@ nano Dockerfile
 FROM ubuntu:latest
 RUN apt-get update && \
     apt-get install -y cowsay && \
-    ln -s /usr/game/cowsay
+    ln -s /usr/games/cowsay /usr/bin/cowsay
+CMD ["cowsay"]
 
-    21:13
+sudo docker build -t cows . 
+sudo docker images
+sudo docker run cows cowsay "Hello"
+
+nano Dockerfile
+
+FROM ubuntu:latest
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay
+COPY testfile.txt /
+CMD ["cowsay"]
+
+touch testfile.txt
+sudo docker build
+33:20
