@@ -24,5 +24,92 @@ COPY testfile.txt /
 CMD ["cowsay"]
 
 touch testfile.txt
-sudo docker build
-33:20
+sudo docker build -t cowsay .
+sudo docker images
+sudo docker build -t cowsay .
+
+nano testfile.txt
+dfghjk
+sudo docker build -t cowsay .
+sudo docker build -t cowsay .
+
+nano Dockerfile
+FROM ubuntu:latest
+COPY testfile.txt /
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay
+CMD ["cowsay"]
+
+sudo docker build -t cowsay .
+docker -- version
+sudo docker build -t cowsay .
+nano testfile.txt
+dfghjkдлорпа
+sudo docker build -t cowsay .
+
+nano Dockerfile
+FROM ubuntu:latest
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay
+COPY testfile.txt /
+CMD sleep 5
+
+sudo docker build -t cows5 .
+
+nano Dockerfile
+FROM ubuntu:latest
+RUN apt-get update && \
+    apt-get install -y cowsay && \
+    ln -s /usr/games/cowsay /usr/bin/cowsay
+COPY testfile.txt /
+CMD sleep 600
+
+sudo docker build -t cows600 .
+
+sudo docker build -d --name cows5d cows5
+sudo docker exec -it cows5d bash
+
+sudo docker build -d --name cows600d cows600
+sudo docker exec -it cows600d bash
+sudo docker ps -a
+
+
+mkdir testsem4
+cd testsem4
+nano Dockerfile
+
+FROM ubuntu:latest
+RUN ls -a
+ENTRYPOINT sleep 600
+
+sudo docker build -t testcont .
+sudo docker run -d --name testcont testcont
+sudo docker exec -it testcont bash
+ls -a
+exit
+sudo docker run -it --name testcont1 testcont bash
+nano Dockerfile
+
+FROM ubuntu:latest
+RUN ls -a
+CMD sleep 600
+sudo docker build -t testcont .
+sudo docker run -it --name testcont2 testcont bash
+ls -a
+exit
+
+
+mkdir 704
+cd 704
+nano Dockerfile
+FROM ubuntu:latest
+EXPOSE 22
+
+sudo docker build -t sshubuntu .
+sudo docker run -d - dit -p 8085:80 -p 222:22 -h sshu --name sshu ssubuntu --net=host
+sudo docker ps -a
+ssh localhost:222
+sudo apt install telnet
+sudo docker stop 

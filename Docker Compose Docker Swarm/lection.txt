@@ -1,0 +1,28 @@
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=test123 -d mysql:8.0.31
+docker ps
+docker run --name mymphp -d --link some-mysql:db -p 8081:80 phpmyadmin/phpmyadmin
+docker ps
+
+vi example.yaml
+first_name: Vladlen
+last_name: Melnik
+
+animals:
+  cat:
+    name: Simba
+    age: 1-year
+
+  dog:
+    name: July
+    age: 2
+
+
+cat example.yaml
+
+vi project.yaml
+
+version: '3.9'
+
+services:
+
+  
