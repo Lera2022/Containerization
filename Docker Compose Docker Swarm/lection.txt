@@ -25,4 +25,90 @@ version: '3.9'
 
 services:
 
+  db:
+    image: mariadb:10.10.2
+    restart: always
+    enviroment:
+      MYSQL_ROOT_PASSWORD: 12345
+
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - 6080:8080
+
+
+docker-compose build
+docker-compose up -d
+docker run -d
+docker-compose start
+docker-compose down
+docker-compose stop
+
+docker-compose logs -f <service_name>
+docker-compose exec
+docker-compose images
+
+
+cat project.yaml
+vi project.yaml
+
+version: '3.9'
+
+services:
+
+  db:
+    // build: ./db
+    image: mariadb:10.10.2
+    restart: always
+    enviroment:
+      MYSQL_ROOT_PASSWORD: 12345
+
+  adminer:
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - 6080:8080
   
+docker-compose up^C
+docker-compose up -d
+docker ps
+docker container inspect root_adminer_1
+docker container inspect root_db_1
+cat docker-compose.yml
+docker-compose stop
+docker ps -a
+docker-compose start
+docker-compose logs
+docker-compose down
+docker ps -a
+docker-compose start
+
+docker-1
+docker swarm init
+docker node ls
+
+docker-2
+docker swarm join --token <>
+docker swarm leave
+docker node rm <id>
+docker node promote docker-2
+docker node ls
+docker node --help
+docker node inspect docker-2
+
+
+docker network ls
+docker network create --driver overlay --subnet 4.5.6.0/24 test-network --attachable
+docker network ls
+docker run -d --ip 4.5.6.7 --net test-network --name container-1 busybox sleep 3600
+docker ps
+
+docker run -d --ip 4.5.6.8 --net test-network --name container-2 busybox sleep 3600
+docker ps
+docker exec -it container-2 sh
+ping 4.5.6.7
+
+ip a
+ll /var/run/docker/netns/
+nsenter --net=/var/run/docker/netns/<> ip -d link show
