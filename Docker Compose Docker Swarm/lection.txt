@@ -3,7 +3,7 @@ docker ps
 docker run --name mymphp -d --link some-mysql:db -p 8081:80 phpmyadmin/phpmyadmin
 docker ps
 
-vi example.yaml
+vi example.yml
 first_name: Vladlen
 last_name: Melnik
 
@@ -17,9 +17,9 @@ animals:
     age: 2
 
 
-cat example.yaml
+cat example.yml
 
-vi project.yaml
+vi project.yml
 
 version: '3.9'
 
@@ -28,7 +28,7 @@ services:
   db:
     image: mariadb:10.10.2
     restart: always
-    enviroment:
+    environment:
       MYSQL_ROOT_PASSWORD: 12345
 
   adminer:
@@ -50,8 +50,8 @@ docker-compose exec
 docker-compose images
 
 
-cat project.yaml
-vi project.yaml
+cat project.yml
+vi project.yml
 
 version: '3.9'
 
@@ -61,7 +61,7 @@ services:
     // build: ./db
     image: mariadb:10.10.2
     restart: always
-    enviroment:
+    environment:
       MYSQL_ROOT_PASSWORD: 12345
 
   adminer:
